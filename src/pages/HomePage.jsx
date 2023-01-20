@@ -19,7 +19,11 @@ export default function HomePage() {
     }
 
     allCities();
-  }, [])
+  }, []);
+
+  function handleSelectedCity(city) {
+    console.log(city)
+  }
 
   return (
     <>
@@ -29,7 +33,10 @@ export default function HomePage() {
 
       <Main>
         <div className="flex flex-row justify-center">
-          <Cities allCities={allCities} />
+          <Cities 
+            allCities={allCities}
+            onSelectedCity={handleSelectedCity}
+          />
         </div>
       </Main>
     </>
