@@ -32,7 +32,7 @@ export default function ElectionResult({
 
   return(
     <div>
-      <h3 className="font-bold text-center">Eleições em Gothan</h3>
+      <h3 className="font-bold text-center">Eleições em {cityResult?.name}</h3>
 
       <div>
         <AmountVoters 

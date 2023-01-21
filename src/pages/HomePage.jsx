@@ -32,7 +32,11 @@ export default function HomePage() {
   }, []);
 
   function handleSelectedCity(city) {
-    setCitySelected(city);
+    setLoading(true);
+    setTimeout(() => {
+      setCitySelected(city);
+      setLoading(false);
+    }, 500);
   }
 
   let mainContainer = (
@@ -67,7 +71,7 @@ export default function HomePage() {
   return (
     <>
       <Header>
-        Eleições dos Herois
+        Eleições dos Heróis
       </Header>
 
       <Main>
