@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AmountVoters from "./AmountVoters";
 import CandidatesCard from "./CandidatesCard";
 import { getElectionCity } from "../services/electionService";
@@ -6,12 +6,13 @@ import { getElectionCity } from "../services/electionService";
 export default function ElectionResult({
   citySelected = ''
 }) {
+  const [electionResult, setElectionResult] = useState([]);
 
   useEffect(() => {
     async function getCitySelectedElection() {
       try {
         const city = await getElectionCity(citySelected);
-        console.log(city);
+        setElectionResult(city);
       } catch (error) {
         console.log(error.message);
       }
@@ -29,7 +30,14 @@ export default function ElectionResult({
       </div>
 
       <div className="mt-8">
-        <CandidatesCard />
+        {electionResult.map((candidate, index) => {
+          return(
+            <CandidatesCard 
+              key={index}
+              candidate={candidate}
+            />
+          );
+        })}
       </div>
     </div>
   );

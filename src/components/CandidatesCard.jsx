@@ -1,8 +1,24 @@
-import imagemCandidator from '../img/batman.png';
+import { useEffect, useState } from 'react';
+import { getByIdCandidate } from '../services/candidateService';
 
 export default function CandidatesCard({
-  elected = false
+  elected = false,
+  candidate = {}
 }) {
+  const [candidateInfo, setCandidateInfo] = useState({});
+
+  useEffect(() => {
+    async function getCandidate() {
+      try {
+        const candidateInfo = await getByIdCandidate(candidate.candidateId);
+        setCandidateInfo(candidateInfo);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    getCandidate();
+  }, [candidate]);
 
   const electedCandidate = elected ? 'text-green-500' : 'text-yellow-400';
 
@@ -16,7 +32,7 @@ export default function CandidatesCard({
       <div className='flex justify-between'>
         <img 
           className='border rounded-full w-16 h-16'
-          src={imagemCandidator} 
+          src={`/img/${candidateInfo.username}.png`} 
           alt="Foto do candidato" 
         />
 
@@ -27,7 +43,7 @@ export default function CandidatesCard({
       </div>
 
       <div className='mt-8 flex flex-col text-center'>
-        <span>Batman</span>
+        <span>{candidateInfo.name}</span>
 
         <span className={`mt-6 ${electedCandidate}`}>Eleito</span>
       </div>

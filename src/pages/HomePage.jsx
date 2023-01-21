@@ -13,7 +13,6 @@ export default function HomePage() {
     async function allCities() {
       try {
         const cities = await getAllCities();
-        console.log(cities);
         setAllCities(cities);
       } catch (error) {
         console.log(error.message);
@@ -24,7 +23,6 @@ export default function HomePage() {
   }, []);
 
   function handleSelectedCity(city) {
-    console.log(city)
     setCitySelected(city)
   }
 
