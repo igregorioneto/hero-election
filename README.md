@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+<h1 align="center">Hero Election</h1>
+<h1>
+    <a href="https://pt-br.reactjs.org/docs/getting-started.html">🔗
+     ReactJS
+     </a>
+     <a href="https://axios-http.com/docs/intro"> |
+     Axios
+     </a>
+     <a href="https://tailwindcss.com/docs/installation"> |
+     Tailwind CSS
+     </a>
+</h1>
+<p>
+🚀 Sistema consumindo uma API de um desafio na web de eleições de heróis. Consumindo a api com Axios e seguindo a susgestão de uma UI do desafio. Utilizando também o Tailwind CSS.
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://img.shields.io/static/v1?label=HeroElection&message=Greg%C3%B3rioNeto&color=7159c1&style=for-the-badge&logo=ghost">
 
-## Available Scripts
+<h1 align="center">
+  <img alt="Heroes" title="#Heroes" src="https://i.picasion.com/pic91/b77a291dd272dee86cccbf69d0e60d1a.gif" />
+</h1>
 
-In the project directory, you can run:
+<h1 align="center">
+  <h2>Tela sugestão do UI</h2>
+  <img alt="UI" title="#UI" src="https://i.picasion.com/pic91/b77a291dd272dee86cccbf69d0e60d1a.gif" />
+</h1>
 
-### `npm start`
+<p align="center">
+ <a href="#objetivo">Objetivo</a> •
+ <a href="#tecnologias">Tecnologias</a> •
+ <a href="#tecnologias">Como rodar o projeto</a> 
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h2 align="center">
+Objetivo:
+</h2>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p align="center">
+<ul>
+    <li>
+    Consumindo API com Axios
+    </li>
+    <li>
+    Modelando interface de acordo com a UI do desafio
+    </li>
+    <li>
+    Componentizando
+    </li>
+    <li>
+    Usando o Tailwind CSS para facilitar no desenvolvimento.
+    </li>
+</ul>
+</p>
 
-### `npm test`
+<h2 align="center">
+Tecnologias:
+</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="center">
 
-### `npm run build`
+[ReactJS](https://pt-br.reactjs.org/docs/getting-started.html)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Tailwind CSS](https://tailwindcss.com/docs/installation)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Axios](https://axios-http.com/docs/intro)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</p>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2 align="center">
+Como rodar o projeto:
+</h2>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="center">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<h3>Instalar os pacotes</h3>
+Entrar na pasta do backend e rodar o `npm i` para instalar os pacotes do json server e na pasta principal do projeto rodar também o `npm i` para instalar os pacotes do projeto ReactJS.
+</p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h3>Rodando o projeto</h3>
+Rodar o `npm start` no frontend e entrar com outro console na pasta backend e rodar o `npm run server` para rodar o backend e acessar com a url <a>http://localhost:3000/</a>
+</p>

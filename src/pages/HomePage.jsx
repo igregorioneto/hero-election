@@ -33,10 +33,10 @@ export default function HomePage() {
 
   function handleSelectedCity(city) {
     setLoading(true);
+    setCitySelected(city);
     setTimeout(() => {
-      setCitySelected(city);
       setLoading(false);
-    }, 500);
+    }, 300);
   }
 
   let mainContainer = (
