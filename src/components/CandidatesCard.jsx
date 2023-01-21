@@ -4,26 +4,27 @@ import { getByIdCandidate } from '../services/candidateService';
 export default function CandidatesCard({
   elected = false,
   candidate = {},
-  electionResult = []
+  electionResult = [],
+  votingPopulation = 0
 }) {
   const [candidateInfo, setCandidateInfo] = useState({});
+  const [candidatePercent, setCandidatePercent] = useState(0);
 
   useEffect(() => {
     async function getCandidate() {
       try {
         const candidateElection = await getByIdCandidate(candidate.candidateId);
-        const c = electionResult.find((c) => c.candidateId === candidate.candidateId)
-        setCandidateInfo(candidateElection,
-          c.votes ? candidateElection.votes = c.votes.toLocaleString('pt-BR') : 
-          candidateElection.votes = ''
-        );
+        const c = electionResult.find((c) => c.candidateId === candidate.candidateId);
+        const percent = (c?.votes * 100) /  votingPopulation;
+        setCandidatePercent(percent?.toFixed(2));
+        setCandidateInfo(candidateElection);
       } catch (error) {
         console.log(error.message);
       }
     }
 
     getCandidate();
-  }, [candidate, electionResult]);
+  }, [candidate, electionResult, votingPopulation]);
 
   const electedCandidate = elected ? 'text-green-500' : 'text-yellow-400';
 
@@ -42,15 +43,15 @@ export default function CandidatesCard({
         />
 
         <div className='flex flex-col'>
-          <span className={`mb-2 text-center ${electedCandidate}`}>45%</span>
-          <span className='text-xs'>{candidateInfo.votes} votos</span>
+          <span className={`mb-2 text-center ${electedCandidate}`}>{candidatePercent}%</span>
+          <span className='text-xs'>{candidate?.votes?.toLocaleString('pt-BR')} votos</span>
         </div>
       </div>
 
       <div className='mt-8 flex flex-col text-center'>
         <span>{candidateInfo.name}</span>
 
-        <span className={`mt-6 ${electedCandidate}`}>Eleito</span>
+        <span className={`mt-6 ${electedCandidate}`}>{candidateInfo.situation}</span>
       </div>
 
     </div>

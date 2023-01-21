@@ -15,12 +15,7 @@ export default function ElectionResult({
       try {
         const election = await getElectionCity(citySelected);
         const city = await getCityById(citySelected);
-        setCityResult(city, 
-          city.votingPopulation ? city.votingPopulation = city.votingPopulation.toLocaleString('pt-BR') : city.votingPopulation = '',
-          city.absence ? city.absence = city.absence.toLocaleString('pt-BR') : city.absence = '',
-          city.presence ? city.presence = city.presence.toLocaleString('pt-BR') : city.presence = ''
-        );
-        console.log(election)
+        setCityResult(city);
         setElectionResult(election);
       } catch (error) {
         console.log(error.message);
@@ -36,9 +31,9 @@ export default function ElectionResult({
 
       <div>
         <AmountVoters 
-          votingPopulation={cityResult.votingPopulation}
-          absence={cityResult.absence}
-          presence={cityResult.presence}
+          votingPopulation={cityResult?.votingPopulation}
+          absence={cityResult?.absence}
+          presence={cityResult?.presence}
           totalCandidaties={electionResult.length}
         />
       </div>
@@ -50,6 +45,7 @@ export default function ElectionResult({
               key={index}
               candidate={candidate}
               electionResult={electionResult}
+              votingPopulation={cityResult?.votingPopulation}
             />
           );
         }).sort((a, b) => {

@@ -8,9 +8,9 @@ export default function AmountVoters({
   return(
     <div>
       <div className="mt-4 text-center">
-        <span className="mr-4">Total de eleitores: {votingPopulation}</span>
-        <span className="mr-4">Abstenação: {absence}</span>
-        <span>Comparecimento: {presence}</span>
+        <span className="mr-4">Total de eleitores: {votingPopulation?.toLocaleString('pt-BR')}</span>
+        <span className="mr-4">Abstenação: {absence?.toLocaleString('pt-BR')}</span>
+        <span>Comparecimento: {presence?.toLocaleString('pt-BR')}</span>
       </div>
       <div className="text-center mt-4">
         {totalCandidaties} candidatos
