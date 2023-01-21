@@ -13,7 +13,10 @@ export default function CandidatesCard({
       try {
         const candidateElection = await getByIdCandidate(candidate.candidateId);
         const c = electionResult.find((c) => c.candidateId === candidate.candidateId)
-        setCandidateInfo(candidateElection, candidateElection.votes = c.votes);
+        setCandidateInfo(candidateElection,
+          c.votes ? candidateElection.votes = c.votes.toLocaleString('pt-BR') : 
+          candidateElection.votes = ''
+        );
       } catch (error) {
         console.log(error.message);
       }
