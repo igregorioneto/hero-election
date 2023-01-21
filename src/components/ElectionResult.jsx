@@ -20,6 +20,7 @@ export default function ElectionResult({
           city.absence ? city.absence = city.absence.toLocaleString('pt-BR') : city.absence = '',
           city.presence ? city.presence = city.presence.toLocaleString('pt-BR') : city.presence = ''
         );
+        console.log(election)
         setElectionResult(election);
       } catch (error) {
         console.log(error.message);
@@ -51,6 +52,8 @@ export default function ElectionResult({
               electionResult={electionResult}
             />
           );
+        }).sort((a, b) => {
+          return b.props.candidate.votes - a.props.candidate.votes;
         })}
       </div>
     </div>
