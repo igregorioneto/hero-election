@@ -29,12 +29,13 @@ export default function ElectionResult({
         <AmountVoters />
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 flex flex-row items-center justify-center flex-wrap">
         {electionResult.map((candidate, index) => {
           return(
             <CandidatesCard 
               key={index}
               candidate={candidate}
+              electionResult={electionResult}
             />
           );
         })}

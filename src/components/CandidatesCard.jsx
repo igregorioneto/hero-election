@@ -3,22 +3,24 @@ import { getByIdCandidate } from '../services/candidateService';
 
 export default function CandidatesCard({
   elected = false,
-  candidate = {}
+  candidate = {},
+  electionResult = []
 }) {
   const [candidateInfo, setCandidateInfo] = useState({});
 
   useEffect(() => {
     async function getCandidate() {
       try {
-        const candidateInfo = await getByIdCandidate(candidate.candidateId);
-        setCandidateInfo(candidateInfo);
+        const candidateElection = await getByIdCandidate(candidate.candidateId);
+        const c = electionResult.find((c) => c.candidateId === candidate.candidateId)
+        setCandidateInfo(candidateElection, candidateElection.votes = c.votes);
       } catch (error) {
         console.log(error.message);
       }
     }
 
     getCandidate();
-  }, [candidate]);
+  }, [candidate, electionResult]);
 
   const electedCandidate = elected ? 'text-green-500' : 'text-yellow-400';
 
@@ -38,7 +40,7 @@ export default function CandidatesCard({
 
         <div className='flex flex-col'>
           <span className={`mb-2 text-center ${electedCandidate}`}>45%</span>
-          <span className='text-xs'>700.000 votos</span>
+          <span className='text-xs'>{candidateInfo.votes} votos</span>
         </div>
       </div>
 
