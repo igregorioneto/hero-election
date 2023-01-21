@@ -23,7 +23,7 @@ export default function HomePage() {
   }, []);
 
   function handleSelectedCity(city) {
-    setCitySelected(city)
+    setCitySelected(city);
   }
 
   return (
