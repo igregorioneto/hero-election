@@ -4,18 +4,27 @@ import Header from "../components/Header";
 import Main from "../components/Main";
 import { getAllCities } from "../services/citiesService";
 import ElectionResult from "../components/ElectionResult";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 export default function HomePage() {
   const [allCities, setAllCities] = useState([]);
   const [citySelected, setCitySelected] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function allCities() {
       try {
         const cities = await getAllCities();
         setAllCities(cities);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+        setError('');
       } catch (error) {
-        console.log(error.message);
+        setError(error.message);
       }
     }
 
@@ -26,14 +35,20 @@ export default function HomePage() {
     setCitySelected(city);
   }
 
-  return (
-    <>
-      <Header>
-        Eleições dos Herois
-      </Header>
+  let mainContainer = (
+    <div className="flex flex-row ali justify-center">
+      <Loading />
+    </div>
+  );
 
-      <Main>
-        <div className="flex flex-row justify-center">
+  if (error) {
+    mainContainer = <Error>{ error }</Error>
+  }
+
+  if (!loading && !error) {
+    mainContainer = (
+      <>
+        <div className="flex flex-row justify-center mt-8">
           <Cities 
             allCities={allCities}
             onSelectedCity={handleSelectedCity}
@@ -45,6 +60,18 @@ export default function HomePage() {
             citySelected={citySelected}
           />
         </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Header>
+        Eleições dos Herois
+      </Header>
+
+      <Main>
+        { mainContainer }
       </Main>
     </>
   );
