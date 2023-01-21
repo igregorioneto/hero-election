@@ -9,14 +9,19 @@ export default function ElectionResult({
 }) {
   const [electionResult, setElectionResult] = useState([]);
   const [cityResult, setCityResult] = useState({});
+  const [elected, setElected] = useState({});
 
   useEffect(() => {
     async function getCitySelectedElection() {
       try {
         const election = await getElectionCity(citySelected);
         const city = await getCityById(citySelected);
+        const electedCandidate = election.reduce(function(prev, current)  {
+          return prev.votes > current.votes ? prev : current;
+        })
         setCityResult(city);
         setElectionResult(election);
+        setElected(electedCandidate);
       } catch (error) {
         console.log(error.message);
       }
@@ -46,6 +51,7 @@ export default function ElectionResult({
               candidate={candidate}
               electionResult={electionResult}
               votingPopulation={cityResult?.votingPopulation}
+              elected={elected}
             />
           );
         }).sort((a, b) => {

@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { getByIdCandidate } from '../services/candidateService';
 
 export default function CandidatesCard({
-  elected = false,
+  elected = {},
   candidate = {},
   electionResult = [],
   votingPopulation = 0
 }) {
   const [candidateInfo, setCandidateInfo] = useState({});
   const [candidatePercent, setCandidatePercent] = useState(0);
+  const [electedClass, setElectedClass] = useState(false);
 
   useEffect(() => {
     async function getCandidate() {
@@ -18,15 +19,16 @@ export default function CandidatesCard({
         const percent = (c?.votes * 100) /  votingPopulation;
         setCandidatePercent(percent?.toFixed(2));
         setCandidateInfo(candidateElection);
+        setElectedClass(elected.candidateId === candidateElection.id ? true : false);
       } catch (error) {
         console.log(error.message);
       }
     }
 
     getCandidate();
-  }, [candidate, electionResult, votingPopulation]);
+  }, [candidate, electionResult, votingPopulation, elected]);
 
-  const electedCandidate = elected ? 'text-green-500' : 'text-yellow-400';
+  const electedCandidate = electedClass ? 'text-green-500' : 'text-yellow-400';
 
   return(
     <div
@@ -51,7 +53,7 @@ export default function CandidatesCard({
       <div className='mt-8 flex flex-col text-center'>
         <span>{candidateInfo.name}</span>
 
-        <span className={`mt-6 ${electedCandidate}`}>{candidateInfo.situation}</span>
+        <span className={`mt-6 ${electedCandidate}`}>{electedClass ? 'Eleito' : 'Não eleito'}</span>
       </div>
 
     </div>
